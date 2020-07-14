@@ -16,7 +16,7 @@ php artisan db:seed
 
 Currently hosted on Heroku.com and db4free.net
 
-To make a get request, enter a city name at the end of url https://recommend-product-app.herokuapp.com/api/products/recommended/{city name}
+To make a get request, enter a city name at the end of url https://recommend-product-app.herokuapp.com/api/products/recommended/city_name
 (recommended to use https://www.postman.com/)
 
 example:
