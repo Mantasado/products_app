@@ -17,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// Show single product based on city name
+Route::get('products/recommended/{city}', 'RecommendProductController@show');
