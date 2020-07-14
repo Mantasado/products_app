@@ -10,6 +10,15 @@ class CurrentWeatherController extends Controller
     {
         $response = Http::get('https://api.meteo.lt/v1/places/' .$city. '/forecasts/long-term');
 
-        return $response->json();
+        try {
+            if($response->successful())
+            { 
+                return $response->json();
+            }
+        } catch (\Throwable $th) {
+            report($th);
+
+            return false;
+        }
     }
 }

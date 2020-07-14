@@ -15,8 +15,21 @@ class RecommendProductController extends Controller
 
         //get json from API
         $cityWeather = $weather->getWeather($city);
-        $condition = $cityWeather['forecastTimestamps'][0]['conditionCode'];
 
+        //check if a valid city name was submited
+        if(empty($cityWeather))
+        {
+            return 'Invalid city name';
+        }
+        
+        $condition = $cityWeather['forecastTimestamps'][0]['conditionCode'];
+        
+        //check if getting a valid weather condition
+        if ($condition == 'na')
+        {
+            return 'Unable to get current weather condition';
+        }
+        
         //get products from database that match weather condition
         $product = Product::where('weather', $condition)->get();
 
